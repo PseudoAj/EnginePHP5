@@ -3,12 +3,13 @@
 # Pre set-up variables
 
 GITDIR="/tmp/git"
+ENGINEAPIGIT="https://github.com/wvulibraries/engineAPI.git"
+ENGINEBRANCH="master"
 ENGINEAPIHOME="/home/engineAPI"
 
-SERVERURL="/home/engineAPI"
+SERVERURL="/home/engineAPIPHP5"
 DOCUMENTROOT="public_html"
-TEMPLATES=$GITDIR/engineAPITemplates
-MODULES=$GITDIR/engineAPI-Modules
+SITEROOT="/home/engineAPIPHP5/public_html/src"
 
 #Add the RPM for PHP5.6 to CentOS7
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -42,34 +43,23 @@ systemctl start httpd
 chkconfig httpd on
 echo -e "----Apache configuration files----\n\n"
 
+rm -f /etc/httpd/conf/httpd.conf
+ln -s /vagrant/serverConfiguration/httpd.conf /etc/httpd/conf/httpd.conf
+echo -e "----httpd configuaration files----\n\n"
+
 mkdir -p $GITDIR
 cd $GITDIR
-git clone https://github.com/wvulibraries/engineAPITemplates.git
+git clone -b $ENGINEBRANCH $ENGINEAPIGIT
 git clone https://github.com/wvulibraries/engineAPI-Modules.git
 
 mkdir -p $SERVERURL/phpincludes/
+ln -s /vagrant/template/* $GITDIR/engineAPI/engine/template/
+ln -s $GITDIR/engineAPI-Modules/src/modules/* $GITDIR/engineAPI/engine/engineAPI/latest/modules/
 ln -s /vagrant/engine/ $SERVERURL/phpincludes/
 echo -e "----Cloned engineAPI----\n\n"
 
-ln -s /vagrant/public_html $SERVERURL/$DOCUMENTROOT
-
-rm -f /etc/php.ini
-rm -f /etc/httpd/conf/httpd.conf
-
-ln -s /vagrant/sync/serverConfiguration/php.ini /etc/php.ini
-ln -s /vagrant/sync/serverConfiguration/vagrant_httpd.conf /etc/httpd/conf/httpd.conf
-
-mkdir -p $SERVERURL/$DOCUMENTROOT/javascript/
-ln -s /tmp/git/engineAPI/engine/template/distribution/public_html/js $SERVERURL/$DOCUMENTROOT/javascript/distribution
-
-mkdir -p /vagrant/sync/serverConfiguration/serverlogs
-touch /vagrant/sync/serverConfiguration/serverlogs/error_log
-/etc/init.d/httpd restart
-echo -e "----Application specific migrations completed----\n\n"
-
-/etc/init.d/mysqld start
-mysql -u root < /vagrant/sync/sql/vagrantSetup.sql
-mysql -u root EngineAPI < /vagrant/sync/sql/EngineAPI.sql
-echo -e "----MySQL setup for engineAPI----\n\n"
-
+mkdir -p $SERVERURL/$DOCUMENTROOT
+ln -s /vagrant/src $SITEROOT
+ln -s $SERVERURL/phpincludes/engine/engineAPI/latest $SERVERURL/phpincludes/engine/engineAPI/4.0
+echo -e "----public folder has been set----\n\n"
 
