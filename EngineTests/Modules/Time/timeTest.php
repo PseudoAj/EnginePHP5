@@ -1,6 +1,4 @@
 <?php
-//load the time module
-require_once '../../../engine/engineAPI/latest/modules/time/time.php';
 
 class validateTest extends PHPUnit_Framework_TestCase {
 

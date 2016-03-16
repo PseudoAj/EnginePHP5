@@ -28,6 +28,12 @@ echo -e "----Installed Auth Plugins for MySQL----\n\n"
 yum -y install php56w php56w-bcmath php56w-cli php56w-common php56w-gd php56w-ldap php56w-mbstring php56w-mcrypt php56w-mysql php56w-odbc php56w-pdo php56w-pear php56w-pear-Benchmark php56w-pecl-apc php56w-pecl-imagick php56w-pecl-memcache php56w-soap php56w-xml php56w-xmlrpc
 echo -e "----Installed PHP 5.6----\n\n"
 
+wget https://phar.phpunit.de/phpunit.phar
+chmod +x phpunit.phar
+mv phpunit.phar /usr/local/bin/phpunit
+phpunit --version
+echo -e "----Installed PHPUNIT----\n\n"
+
 rm -f /etc/php.ini
 ln -s /vagrant/serverConfiguration/php.ini /etc/php.ini
 echo -e "----Replaced PHP configurations----\n\n"
