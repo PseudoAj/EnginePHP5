@@ -3,7 +3,7 @@
  * EngineAPI
  *
  * EngineAPI core object. This is the root of the entire EngineAPI framework
- * Required PHP Version: 5.3
+ * Required PHP Version: 5.6
  *
  * @author  WVU Library Systems
  * @version 4.0

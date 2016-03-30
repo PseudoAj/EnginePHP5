@@ -1,5 +1,4 @@
 <?php
-
 class validateTest extends PHPUnit_Framework_TestCase {
 
 	public function setup() {
