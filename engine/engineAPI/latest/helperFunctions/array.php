@@ -146,7 +146,8 @@ function array_prevIndex($array,$index,$loop=FALSE) {
 function array_getFirstIndex($array) {
 
     if (is_array($array) && count($array) > 0) {
-        return(array_shift(array_keys($array)));
+        $keys=array_keys($array);
+        return(array_shift($keys));
     }
     
     return(FALSE); 
@@ -163,7 +164,8 @@ function array_getLastIndex($array) {
 
 	
 	if (is_array($array) && count($array) > 0) {
-		return(array_pop(array_keys($array)));
+        $keys=array_keys($array);
+		return(array_pop($keys));
 	}
 	
 	return(FALSE);
