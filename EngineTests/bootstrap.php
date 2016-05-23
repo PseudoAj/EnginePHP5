@@ -1,5 +1,4 @@
 <?php
-
 // Start output-buffering for any header for cookie functions ('headers already sent' error)
 ob_start();
 
@@ -7,9 +6,6 @@ $modulesDirectory  = "engine/engineAPI/latest/modules";
 $helperFunctions = "engine/engineAPI/latest/helperFunctions";
 
 $availableModules  = array();
-
-
-
 
 //Load helper function Modules
 $hfDirHandle = @opendir($helperFunctions) or die("Unable to open: ".$helperFunctions);
@@ -33,9 +29,9 @@ while (false !== ($dir = readdir($modules_dirHandle))) {
 	if ($dir != "." && $dir != ".." && is_dir($moduleDirectory) === TRUE) {
 
 		$singleMod_dirHandle = @opendir($moduleDirectory) or die("Unable to open (Single Module): ".$moduleDirectory);
-		
+
 		while (false !== ($file = readdir($singleMod_dirHandle))) {
-		
+
 			if ($file != "." && $file != ".." && $file) {
 
 				// if ($file == "onLoad.php") {

@@ -7,7 +7,7 @@
 //     	$pdo = new PDO($GLOBALS['DB_DSN'], $GLOBALS['DB_USER'], $GLOBALS['DB_PASSWD']);
 //     	return $this->createDefaultDBConnection($pdo, $GLOBALS['DB_DBNAME']);
 //     }
- 
+
 //     public function getDataSet() {
 //     	//$ds =
 //  		return $this->createFlatXMLDataSet(dirname(__FILE__).'/_files/localvarsTest_dataset.xml');
@@ -17,7 +17,7 @@
 //     }
 
 //     public function test_test() {
-    	
+
 //     	$this->assertTrue(TRUE);
 //     }
 

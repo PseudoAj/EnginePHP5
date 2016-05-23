@@ -70,6 +70,7 @@ class time {
 			$convert = $tweelveHour;
 		}
 
+
 		return gmdate($convert,$seconds);
 		
 	}

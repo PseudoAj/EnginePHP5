@@ -4,7 +4,7 @@
  * @package EngineAPI
  */
 
-$engineVersion = "3.0";
+$engineVersion = "4.0";
 
 $accessControl   = array();
 $moduleFunctions = array();

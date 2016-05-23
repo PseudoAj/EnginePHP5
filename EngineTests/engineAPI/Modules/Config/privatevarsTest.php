@@ -48,6 +48,7 @@ class privatevarsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function test_get_TestsIfGetRetrievesAVariableFromConfigFile() {
+		$this->privatevars->set(array("mysql","username"),"username");
 		$this->assertEquals("username",$this->privatevars->get(array("mysql","username")));
 	}
 

@@ -5,7 +5,6 @@
  */
 
 // This file should be set to be readable only by the web server user and the system administrator (or root)
-
 $engineDB = array(
 	'driver'        => 'mysql',
 	'driverOptions' => array(
